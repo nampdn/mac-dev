@@ -2,7 +2,7 @@ import {expect, test} from '@oclif/test'
 
 import cmd = require('../src')
 
-describe('mac-dev', () => {
+describe('devfor', () => {
   test
   .stdout()
   .do(() => cmd.run([]))

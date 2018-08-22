@@ -45,6 +45,18 @@ create_bash_profile_and_set_it_as_shell_file() {
   shell_file="$HOME/.bash_profile"
 }
 
+clone_user_repo() {
+  local repo="$1"
+  git clone $repo ~/.devfor/user_config
+}
+
+# Load configure from remote repo
+fancy_echo "Input Git Repo to restore configuration:"
+read REPO
+
+fancy_echo "Clone repo"
+cat $REPO
+
 # shellcheck disable=SC2154
 trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
 
@@ -121,7 +133,7 @@ switch_to_latest_ruby() {
   chruby "ruby-$(latest_installed_ruby)"
 }
 
-append_to_file "$shell_file" "alias macdev='bash <(curl -s https://raw.githubusercontent.com/nampdn/mac-dev/master/mac)'"
+append_to_file "$shell_file" "alias macdev='bash <(curl -s https://raw.githubusercontent.com/nampdn/devfor/master/mac)'"
 
 # shellcheck disable=SC2016
 append_to_file "$shell_file" 'export PATH="$HOME/.bin:$PATH"'
@@ -164,7 +176,7 @@ if brew_is_installed 'cloudfoundry-cli'; then
 fi
 
 fancy_echo "Installing formulas and casks from the Brewfile ..."
-if brew bundle --file="$HOME/.mac-dev/Brewfile"; then
+if brew bundle --file="$HOME/.devfor/Brewfile"; then
   fancy_echo "All formulas and casks were installed successfully."
 else
   fancy_echo "Some formulas or casks failed to install."
@@ -302,9 +314,9 @@ elif [ ! -f "$HOME/.ssh/id_rsa.pub" ]; then
   open ~/Applications/GitKraken.app
 fi
 
-if [ -f "$HOME/.mac-dev.local" ]; then
+if [ -f "$HOME/.devfor.local" ]; then
   # shellcheck source=/dev/null
-  . "$HOME/.mac-dev.local"
+  . "$HOME/.devfor.local"
 fi
 
 fancy_echo 'All done!'

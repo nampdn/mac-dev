@@ -1,12 +1,12 @@
 #!/bin/bash
 
-MAC_DEV_DIR=~/.mac-dev
+MAC_DEV_DIR=$HOME/.devfor
 
-mkdir $MAC_DEV_DIR && pushd $MAC_DEV_DIR
+mkdir -p $MAC_DEV_DIR && pushd $MAC_DEV_DIR
 
-curl --remote-name https://raw.githubusercontent.com/nampdn/mac-dev/master/scripts/install.sh
-curl --remote-name https://raw.githubusercontent.com/nampdn/mac-dev/master/presets/Brewfile
+curl --remote-name https://raw.githubusercontent.com/nampdn/devfor/master/scripts/install.sh
+curl --remote-name https://raw.githubusercontent.com/nampdn/devfor/master/presets/Brewfile
 
-/usr/bin/env bash install.sh 2>&1 | tee ~/mac-dev.log
+/usr/bin/env bash install.sh 2>&1 | tee ~/devfor.log
 
 popd >/dev/null 2>&1

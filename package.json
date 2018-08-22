@@ -1,12 +1,12 @@
 {
-  "name": "mac-dev",
+  "name": "devfor",
   "description": "Spin up a Mac development machine quickly!",
   "version": "0.0.0",
   "author": "Nam Pham <nampdn@protonmail.com>",
   "bin": {
-    "mac-dev": "./bin/run"
+    "devfor": "./bin/run"
   },
-  "bugs": "https://github.com/nampdn/mac-dev/issues",
+  "bugs": "https://github.com/nampdn/devfor/issues",
   "dependencies": {
     "@oclif/command": "^1",
     "@oclif/config": "^1",
@@ -33,16 +33,16 @@
     "/bin",
     "/lib"
   ],
-  "homepage": "https://github.com/nampdn/mac-dev",
+  "homepage": "https://github.com/nampdn/devfor",
   "keywords": [
     "oclif"
   ],
   "license": "MIT",
   "main": "lib/index.js",
   "oclif": {
-    "bin": "mac-dev"
+    "bin": "devfor"
   },
-  "repository": "nampdn/mac-dev",
+  "repository": "nampdn/devfor",
   "scripts": {
     "posttest": "tsc -p test --noEmit && tslint -p test -t stylish",
     "prepack": "rm -rf lib && tsc",
