@@ -1,5 +1,9 @@
 #!/bin/bash
 
+DEVFOR_ROOT="$HOME/.devfor"
+DEVFOR_USER="$DEVFOR_ROOT/user_config"
+DEVFOR_REPO="$DEVFOR_ROOT/.repo"
+
 fancy_echo() {
   # shellcheck disable=SC2039
   local fmt="$1"; shift
@@ -45,17 +49,33 @@ create_bash_profile_and_set_it_as_shell_file() {
   shell_file="$HOME/.bash_profile"
 }
 
-clone_user_repo() {
+sync_user_repo() {
   local repo="$1"
-  git clone $repo ~/.devfor/user_config
+  if [ "$repo" = "" ]; then
+    fancy_echo "Skip repo configuration!"
+  else
+    if [ ! -d "$DEVFOR_USER" ]; then
+      fancy_echo "Cloning your configuration repo to: $DEVFOR_REPO"
+      git clone $repo $DEVFOR_USER
+    else
+      fancy_echo "Updating your configuration repo to: $DEVFOR_REPO"
+      pushd $DEVFOR_USER
+      git pull --rebase --stat origin master
+      popd
+    fi
+    echo "$repo" > "$DEVFOR_REPO"
+  fi
 }
 
-# Load configure from remote repo
-fancy_echo "Input Git Repo to restore configuration:"
-read REPO
-
-fancy_echo "Clone repo"
-cat $REPO
+# Sync latest configuration from remote repo
+if [ ! -f $DEVFOR_REPO ]; then
+  printf "Input git remote repo to restore configuration: "
+  read REPO
+else
+  REPO=$(cat $DEVFOR_REPO)
+  fancy_echo "Load saved configuration from: $REPO"
+fi
+sync_user_repo $REPO
 
 # shellcheck disable=SC2154
 trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
@@ -133,7 +153,7 @@ switch_to_latest_ruby() {
   chruby "ruby-$(latest_installed_ruby)"
 }
 
-append_to_file "$shell_file" "alias macdev='bash <(curl -s https://raw.githubusercontent.com/nampdn/devfor/master/mac)'"
+append_to_file "$shell_file" "alias devfor='bash <(curl -s https://raw.githubusercontent.com/nampdn/devfor/master/mac)'"
 
 # shellcheck disable=SC2016
 append_to_file "$shell_file" 'export PATH="$HOME/.bin:$PATH"'
