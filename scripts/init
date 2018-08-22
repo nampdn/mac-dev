@@ -9,6 +9,7 @@ declare -a DOWNLOAD_SCRIPTS=(
     "$REMOTE_SCRIPTS/install-mac.sh"
     "$REMOTE_SCRIPTS/install-linux.sh"
     "$REMOTE_SCRIPTS/ssh.sh"
+    "$REMOTE_SCRIPTS/git.sh"
     "$REMOTE_PRESETS/Brewfile"
 )
 

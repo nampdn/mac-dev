@@ -213,6 +213,11 @@ fancy_echo 'Checking on SSH key linking...'
 . "$DEVFOR_ROOT/ssh.sh" # Import ssh file to call its function
 make_ssh_key $DEVFOR_USER_SSH
 
+# Load git configuration
+fancy_echo 'Checking on Git configuration...'
+. "$DEVFOR_ROOT/git.sh"
+git_config "$DEVFOR_USER_SSH/config"
+
 fancy_echo 'Checking on Node.js installation...'
 
 if ! brew_is_installed "node"; then
