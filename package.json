@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "author": "Nam Pham <nampdn@protonmail.com>",
   "bin": {
-    "devfor": "./bin/run"
+    "devfor": "./bin/run",
+    "devfor-mac": "./scripts/install-mac.sh"
   },
   "bugs": "https://github.com/nampdn/devfor/issues",
   "dependencies": {
@@ -47,7 +48,8 @@
     "posttest": "tsc -p test --noEmit && tslint -p test -t stylish",
     "prepack": "rm -rf lib && tsc",
     "prepare": "rm -rf lib && tsc",
-    "test": "nyc mocha --forbid-only \"test/**/*.test.ts\""
+    "test": "nyc mocha --forbid-only \"test/**/*.test.ts\"",
+    "dev:scripts": "/usr/bin/env bash ./scripts/install-mac.sh"
   },
   "types": "lib/index.d.ts"
 }
