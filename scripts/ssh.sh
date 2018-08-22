@@ -25,9 +25,11 @@ generate_ssh_key() {
 symlink_ssh_dir() {
     local ssh_in_repo="$1"
     local ssh_to_link="$ssh_in_repo/id_rsa"*
-    sudo ln -s $ssh_to_link $SSH_DIR
-    chmod 600 "$ssh_in_repo/id_rsa"* # Need to making it read only by owner, required by ssh agent.
-    echo "SSH key successfully symlinked from $devfor_user to $SSH_DIR"
+    if [ ! -f "$ssh_in_repo/id_rsa" ]; then
+        sudo ln -s $ssh_to_link $SSH_DIR
+        chmod 600 "$ssh_in_repo/id_rsa"* # Need to making it read only by owner, required by ssh agent.
+        echo "SSH key successfully symlinked from $devfor_user to $SSH_DIR"
+    fi
 }
 
 # Main function to make sure ssh key works.
