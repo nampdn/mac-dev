@@ -67,16 +67,6 @@ sync_user_repo() {
   fi
 }
 
-# Sync latest configuration from remote repo
-if [ ! -f $DEVFOR_REPO ]; then
-  printf "Input git remote repo to restore configuration: "
-  read REPO
-else
-  REPO=$(cat $DEVFOR_REPO)
-  fancy_echo "Load saved configuration from: $REPO"
-fi
-sync_user_repo $REPO
-
 # shellcheck disable=SC2154
 trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
 
@@ -206,6 +196,17 @@ fi
 
 # shellcheck disable=SC2016
 append_to_file "$shell_file" 'eval "$(hub alias -s)"'
+
+# Sync latest configuration from remote repo
+if [ ! -f $DEVFOR_REPO ]; then
+  printf "Input git remote repo to restore configuration: "
+  read REPO
+else
+  REPO=$(cat $DEVFOR_REPO)
+  fancy_echo "Load saved configuration from: $REPO"
+fi
+sync_user_repo $REPO
+
 
 fancy_echo 'Checking on Node.js installation...'
 
