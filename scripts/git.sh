@@ -17,3 +17,21 @@ git_config() {
     echo "Apply git config success!"
     git config --list
 }
+
+sync_user_repo() {
+    local repo="$1"
+    if [ "$repo" = "" ]; then
+        fancy_echo "Skip repo configuration!"
+    else
+        if [ ! -d "$DEVFOR_USER" ]; then
+            fancy_echo "Cloning your configuration repo to: $DEVFOR_REPO"
+            git clone $repo $DEVFOR_USER
+        else
+            fancy_echo "Updating your configuration repo to: $DEVFOR_REPO"
+            pushd $DEVFOR_USER
+            git pull --rebase --stat origin master
+            popd
+        fi
+        echo "$repo" > "$DEVFOR_REPO"
+    fi
+}

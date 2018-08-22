@@ -6,10 +6,14 @@ REMOTE_SCRIPTS="$REMOTE_REPO/scripts"
 REMOTE_PRESETS="$REMOTE_REPO/presets"
 
 declare -a DOWNLOAD_SCRIPTS=(
-    "$REMOTE_SCRIPTS/install-mac.sh"
-    "$REMOTE_SCRIPTS/install-linux.sh"
-    "$REMOTE_SCRIPTS/ssh.sh"
+    "$REMOTE_SCRIPTS/brew.sh"
     "$REMOTE_SCRIPTS/git.sh"
+    "$REMOTE_SCRIPTS/install-linux.sh"
+    "$REMOTE_SCRIPTS/install-mac.sh"
+    "$REMOTE_SCRIPTS/ruby.sh"
+    "$REMOTE_SCRIPTS/shell.sh"
+    "$REMOTE_SCRIPTS/ssh.sh"
+    "$REMOTE_SCRIPTS/utils.sh"
     "$REMOTE_PRESETS/Brewfile"
 )
 
