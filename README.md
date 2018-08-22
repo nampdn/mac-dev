@@ -13,6 +13,9 @@ Spin up a Mac development machine quickly!
 
 <!-- toc -->
 # Usage
+```bash
+bash <(curl -s https://raw.githubusercontent.com/nampdn/mac-dev/master/scripts/init)
+```
 <!-- usage -->
 # Commands
 <!-- commands -->

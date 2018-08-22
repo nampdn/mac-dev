@@ -1,0 +1,18 @@
+cask_args appdir: '/Applications'
+
+brew 'git'
+brew 'libgit2'
+brew 'cmake'
+brew 'itermocil'
+brew 'zsh'
+brew 'watchman'
+brew 'the_silver_searcher'
+
+tap 'homebrew/services'
+brew 'hub'
+
+cask 'slack'
+cask 'skype'
+cask 'synergy'
+cask 'gitkraken'
+cask 'visual-studio-code'
