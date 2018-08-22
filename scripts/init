@@ -14,11 +14,13 @@ declare -a DOWNLOAD_SCRIPTS=(
 
 mkdir -p $DEVFOR_ROOT && pushd $DEVFOR_ROOT
 
+# Download all required scripts
 for i in "${DOWNLOAD_SCRIPTS[@]}"
 do
     curl --remote-name "$i"
 done
 
+# Run specific OS
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     /usr/bin/env bash install-linux.sh 2>&1 | tee ~/devfor.log
 elif [[ "$OSTYPE" == "darwin"* ]]; then
