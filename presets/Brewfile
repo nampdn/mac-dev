@@ -13,6 +13,7 @@ brew 'TomAnthony/itermocil'
 tap 'homebrew/services'
 brew 'hub'
 
+cask 'iterm2'
 cask 'slack'
 cask 'skype'
 cask 'synergy'
