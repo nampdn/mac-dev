@@ -3,7 +3,7 @@
 DEVFOR_ROOT="$HOME/.devfor"
 DEVFOR_USER="$DEVFOR_ROOT/user_config"
 DEVFOR_REPO="$DEVFOR_ROOT/.repo"
-DEVFOR_REPO_SSH="$DEVFOR_REPO/ssh"
+DEVFOR_USER_SSH="$DEVFOR_USER/ssh"
 
 fancy_echo() {
   # shellcheck disable=SC2039
@@ -211,7 +211,7 @@ sync_user_repo $REPO
 # Load ssh linking/generation
 fancy_echo 'Checking on SSH key linking...'
 . "$DEVFOR_ROOT/ssh.sh" # Import ssh file to call its function
-make_ssh_key $DEVFOR_REPO_SSH
+make_ssh_key $DEVFOR_USER_SSH
 
 fancy_echo 'Checking on Node.js installation...'
 
