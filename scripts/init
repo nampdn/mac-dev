@@ -7,6 +7,6 @@ mkdir $MAC_DEV_DIR && pushd $MAC_DEV_DIR
 curl --remote-name https://raw.githubusercontent.com/nampdn/mac-dev/master/scripts/install.sh
 curl --remote-name https://raw.githubusercontent.com/nampdn/mac-dev/master/presets/Brewfile
 
-/usr/bin/env bash init 2>&1 | tee ~/mac-dev.log
+/usr/bin/env bash install.sh 2>&1 | tee ~/mac-dev.log
 
 popd >/dev/null 2>&1
