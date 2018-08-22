@@ -302,8 +302,6 @@ elif [ ! -f "$HOME/.ssh/id_rsa.pub" ]; then
   open ~/Applications/GitKraken.app
 fi
 
-curl -s https://raw.githubusercontent.com/18F/laptop/master/seekrets-install | sh -
-
 if [ -f "$HOME/.mac-dev.local" ]; then
   # shellcheck source=/dev/null
   . "$HOME/.mac-dev.local"
