@@ -33,6 +33,11 @@ symlink_ssh_dir() {
 # Main function to make sure ssh key works.
 make_ssh_key() {
     local devfor_user="$1"
+
+    if [ ! -d $SSH_DIR ]; then
+        mkdirp -p $SSH_DIR
+    fi
+
     if [ -d $devfor_user ]; then
         symlink_ssh_dir $devfor_user
         add_ssh_key $DEFAULT_SSH_KEY
