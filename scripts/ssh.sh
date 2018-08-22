@@ -23,17 +23,18 @@ generate_ssh_key() {
 
 # Symlink existing ssh folder.
 symlink_ssh_dir() {
-    local DEVFOR_USER="$1"
-    sudo ln -s "$DEVFOR_USER/ssh/id_rsa*" "$HOME/.ssh"
-    chmod 600 $DEFAULT_SSH_KEY # Need to making it read only by owner, required by ssh agent.
-    echo "SSH key successfully symlinked from $DEVFOR_USER/ssh to $HOME/.ssh"
+    local ssh_in_repo="$1"
+    local ssh_to_link="$ssh_in_repo/id_rsa"*
+    sudo ln -s $ssh_to_link $SSH_DIR
+    chmod 600 "$ssh_in_repo/id_rsa"* # Need to making it read only by owner, required by ssh agent.
+    echo "SSH key successfully symlinked from $devfor_user to $SSH_DIR"
 }
 
 # Main function to make sure ssh key works.
 make_ssh_key() {
-    local DEVFOR_USER="$1"
-    if [ -d $DEVFOR_USER ]; then
-        symlink_ssh_dir $1
+    local devfor_user="$1"
+    if [ -d $devfor_user ]; then
+        symlink_ssh_dir $devfor_user
         add_ssh_key $DEFAULT_SSH_KEY
     else
         read -p "Not found \"ssh\" directory in user_config repo, do you want to generate one? (Y/n) :" -n 1 -r
@@ -50,4 +51,5 @@ make_ssh_key() {
     fi
 }
 
-make_ssh_key $1
+# Uncomment the line below to debug.
+# make_ssh_key $1

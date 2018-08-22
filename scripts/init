@@ -1,12 +1,28 @@
 #!/bin/bash
 
 DEVFOR_ROOT=$HOME/.devfor
+REMOTE_REPO="https://raw.githubusercontent.com/nampdn/devfor/master"
+REMOTE_SCRIPTS="$REMOTE_REPO/scripts"
+REMOTE_PRESETS="$REMOTE_REPO/presets"
+
+declare -a DOWNLOAD_SCRIPTS=(
+    "$REMOTE_SCRIPTS/install-mac.sh"
+    "$REMOTE_SCRIPTS/install-linux.sh"
+    "$REMOTE_SCRIPTS/ssh.sh"
+    "$REMOTE_PRESETS/Brewfile"
+)
 
 mkdir -p $DEVFOR_ROOT && pushd $DEVFOR_ROOT
 
-curl --remote-name https://raw.githubusercontent.com/nampdn/devfor/master/scripts/install.sh
-curl --remote-name https://raw.githubusercontent.com/nampdn/devfor/master/presets/Brewfile
+for i in "${DOWNLOAD_SCRIPTS[@]}"
+do
+    curl --remote-name "$i"
+done
 
-/usr/bin/env bash install.sh 2>&1 | tee ~/devfor.log
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    /usr/bin/env bash install-linux.sh 2>&1 | tee ~/devfor.log
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    /usr/bin/env bash install-mac.sh 2>&1 | tee ~/devfor.log
+fi
 
 popd >/dev/null 2>&1
