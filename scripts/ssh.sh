@@ -37,7 +37,7 @@ make_ssh_key() {
     local devfor_user="$1"
 
     if [ ! -d $SSH_DIR ]; then
-        mkdirp -p $SSH_DIR
+        mkdir -p $SSH_DIR
     fi
 
     if [ -d $devfor_user ]; then
