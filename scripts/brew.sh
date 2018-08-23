@@ -11,6 +11,14 @@ else
   fancy_echo "Homebrew already installed. Skipping ..."
 fi
 
+brew_is_installed() {
+  brew list -1 | grep -Fqx "$1"
+}
+
+tap_is_installed() {
+  brew tap -1 | grep -Fqx "$1"
+}
+
 # Remove brew-cask since it is now installed as part of brew tap caskroom/cask.
 # See https://github.com/caskroom/homebrew-cask/releases/tag/v0.60.0
 if brew_is_installed 'brew-cask'; then
