@@ -7,5 +7,3 @@ install_user_apps() {
     source "$user_apps_dir/install.sh"
   fi
 }
-
-install_user_apps $1
