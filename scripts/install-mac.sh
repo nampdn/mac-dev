@@ -67,6 +67,10 @@ install_brewfile
 . "$WORKDIR/nodejs.sh"
 setup_nvm
 
+# Load font script
+. "$WORKDIR/font.sh"
+copy_fonts "$DEVFOR_USER/fonts"
+
 fancy_echo 'Checking on Python installation...'
 
 if ! brew_is_installed "python3"; then
