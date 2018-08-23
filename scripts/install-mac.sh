@@ -6,6 +6,9 @@ DEVFOR_USER="$DEVFOR_ROOT/user_config"
 DEVFOR_REPO="$DEVFOR_ROOT/.repo"
 DEVFOR_USER_SSH="$DEVFOR_USER/ssh"
 
+# Load mac scripts
+. "$WORKDIR/mac.sh"
+
 # Load util scripts
 . "$WORKDIR/utils.sh"
 
