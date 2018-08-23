@@ -58,8 +58,7 @@ make_ssh_key $DEVFOR_USER_SSH
 # Load brew script
 . "$WORKDIR/brew.sh"
 install_homebrew
-check_brew_tap
-check_brew_installation
+check_brew
 override_user_brewfile
 install_brewfile
 
