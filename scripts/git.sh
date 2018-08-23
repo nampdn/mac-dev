@@ -29,6 +29,7 @@ sync_user_repo() {
         else
             fancy_echo "Updating your configuration repo to: $DEVFOR_REPO"
             pushd $DEVFOR_USER
+            git stash
             git pull --rebase --stat origin master
             popd
         fi
