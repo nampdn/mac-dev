@@ -57,6 +57,11 @@ make_ssh_key $DEVFOR_USER_SSH
 
 # Load brew script
 . "$WORKDIR/brew.sh"
+install_homebrew
+check_brew_tap
+check_brew_installation
+override_user_brewfile
+install_brewfile
 
 # Load nodejs script
 . "$WORKDIR/nodejs.sh"
