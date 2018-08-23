@@ -50,7 +50,7 @@ check_brew() {
 # Override user config Brewfile from user repo instead of default Brewfile.
 override_user_brewfile() {
   local repo="$1"
-  local user_brewfile="$DEVFOR_USER/apps/Brewfile"
+  local user_brewfile="$DEVFOR_USER/apps/brew/Brewfile"
   if [ ! -f $user_brewfile ]; then
       fancy_echo "Using default Brewfile"
   else
