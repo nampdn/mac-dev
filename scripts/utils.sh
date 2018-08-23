@@ -1,5 +1,7 @@
 #!/bin/bash
 
+WORKDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
 fancy_echo() {
   # shellcheck disable=SC2039
   local fmt="$1"; shift
@@ -27,14 +29,6 @@ append_to_file() {
   if ! grep -qs "^$text$" "$file"; then
     printf "\n%s\n" "$text" >> "$file"
   fi
-}
-
-brew_is_installed() {
-  brew list -1 | grep -Fqx "$1"
-}
-
-tap_is_installed() {
-  brew tap -1 | grep -Fqx "$1"
 }
 
 gem_install_or_update() {
