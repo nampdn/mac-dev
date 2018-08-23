@@ -7,8 +7,8 @@ brew 'zsh'
 brew 'watchman'
 brew 'the_silver_searcher'
 
-tap 'TomAnthony/brews'
-brew 'TomAnthony/itermocil'
+tap 'tomanthony/brews'
+brew 'itermocil'
 
 tap 'homebrew/services'
 brew 'hub'
