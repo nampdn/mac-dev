@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "Uh Oh! Ubuntu installation script is not yet available!"
+echo "Warning: You should buy a MAC to run this script!"
