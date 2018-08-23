@@ -55,6 +55,9 @@ fancy_echo 'Checking on SSH key linking...'
 . "$WORKDIR/ssh.sh" # Import ssh file to call its function
 make_ssh_key $DEVFOR_USER_SSH
 
+# Load brew script
+. "$WORKDIR/brew.sh"
+
 # Load nodejs script
 . "$WORKDIR/nodejs.sh"
 setup_nvm
