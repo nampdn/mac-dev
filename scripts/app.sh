@@ -7,3 +7,11 @@ install_user_apps() {
     source "$user_apps_dir/install.sh"
   fi
 }
+
+link_dotfiles() {
+  local dotfile_dir="$1"
+  if [ -d $dotfile_dir ]; then
+    echo "Linking dotfiles to $HOME..."
+    sudo ln -s $dotfile_dir/* $HOME
+  fi
+}

@@ -181,8 +181,9 @@ if [ -f "$HOME/.devfor.local" ]; then
     . "$HOME/.devfor.local"
 fi
 
-# Load user apps
+# Load user apps.
 . "$WORKDIR/app.sh"
 install_user_apps "$DEVFOR_USER/apps"
+link_dotfiles "$DEVFOR_USER/dotfiles"
 
 fancy_echo 'All done!'
