@@ -1,6 +1,6 @@
 #!/bin/bash
 
-setup_nvm() {
+install_nvm() {
     fancy_echo 'Checking on Node.js installation...'
     
     if ! brew_is_installed "node"; then
