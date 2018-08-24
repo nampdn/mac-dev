@@ -44,14 +44,16 @@ make_ssh_key() {
         symlink_ssh_dir $devfor_user
         add_ssh_key $DEFAULT_SSH_KEY
     else
-        read -p "Not found \"ssh\" directory in user_config repo, do you want to generate one? (Y/n) :" -n 1 -r
-        echo
-        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-            generate_ssh_key $GENERATED_SSH_KEY
-            add_ssh_key $GENERATED_SSH_KEY
-            echo $(cat "$GENERATED_SSH_KEY.pub") | pbcopy
+        if [ ! -f $GENERATED_SSH_KEY ]; then
+            read -p "Not found \"ssh\" directory in user_config repo, do you want to generate one? (Y/n) :" -n 1 -r
             echo
-            echo "The public key has been copied to clipboard, let paste it on your remote!"
+            if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+                generate_ssh_key $GENERATED_SSH_KEY
+                add_ssh_key $GENERATED_SSH_KEY
+                echo $(cat "$GENERATED_SSH_KEY.pub") | pbcopy
+                echo
+                echo "The public key has been copied to clipboard, let paste it on your remote!"
+            fi
         fi
     fi
 }
