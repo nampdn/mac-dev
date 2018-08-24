@@ -40,7 +40,11 @@ set_default_shell() {
                     echo "=== Note that there won't be visual feedback when you type your password. Type it slowly and press return. ==="
                     echo "=== Press control-c to cancel ==="
                     create_zshrc_and_set_it_as_shell_file
-                    chsh -s "$(which zsh)"
+                    ZSH_PATH=$(which zsh)
+                    if ! grep -q $ZSH_PATH '/etc/shells'; then
+                        echo $ZSH_PATH | sudo tee -a /etc/shells
+                    fi
+                    chsh -s $(which zsh)
                 else
                     fancy_echo "Shell will not be changed."
                 fi
