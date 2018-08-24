@@ -8,6 +8,7 @@ DEVFOR_USER_SSH="$DEVFOR_USER/ssh"
 
 # Load mac scripts
 . "$WORKDIR/mac.sh"
+install_cmd_line_tools
 
 # Load util scripts
 . "$WORKDIR/utils.sh"
