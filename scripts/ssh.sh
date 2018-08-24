@@ -35,18 +35,18 @@ symlink_ssh_dir() {
 # Main function to make sure ssh key works.
 make_ssh_key() {
     local devfor_user="$1"
-
+    
     if [ ! -d $SSH_DIR ]; then
         mkdir -p $SSH_DIR
     fi
-
+    
     if [ -d $devfor_user ]; then
         symlink_ssh_dir $devfor_user
         add_ssh_key $DEFAULT_SSH_KEY
     else
         read -p "Not found \"ssh\" directory in user_config repo, do you want to generate one? (Y/n) :" -n 1 -r
         echo
-        if [[ ! $REPLY =~ ^[Yy]$ ]]
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
             generate_ssh_key $GENERATED_SSH_KEY
             add_ssh_key $GENERATED_SSH_KEY
             echo $(cat "$GENERATED_SSH_KEY.pub") | pbcopy
