@@ -2,9 +2,9 @@
 
 install_user_apps() {
   local user_apps_dir="$1"
-  if [ -d $user_apps_dir ]; then
+  if [ -f "$user_apps_dir/install.sh" ]; then
     echo "Executing user apps dir..."
-    source "$user_apps_dir/install.sh"
+    /usr/bin/env bash "$user_apps_dir/install.sh" $user_apps_dir
   fi
 }
 
