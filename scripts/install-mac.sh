@@ -59,16 +59,16 @@ fancy_echo 'Checking on SSH key linking...'
 . "$WORKDIR/ssh.sh" # Import ssh file to call its function
 make_ssh_key $DEVFOR_USER_SSH
 
+# Load nodejs script
+. "$WORKDIR/nodejs.sh"
+setup_nvm
+
 # Load brew script
 . "$WORKDIR/brew.sh"
 install_homebrew
 check_brew
 override_user_brewfile
 install_brewfile
-
-# Load nodejs script
-. "$WORKDIR/nodejs.sh"
-setup_nvm
 
 # Load font script
 . "$WORKDIR/font.sh"
