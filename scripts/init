@@ -17,6 +17,7 @@ declare -a DOWNLOAD_SCRIPTS=(
     "$REMOTE_SCRIPTS/utils.sh"
     "$REMOTE_SCRIPTS/font.sh"
     "$REMOTE_SCRIPTS/app.sh"
+    "$REMOTE_SCRIPTS/mac.sh"
     "$REMOTE_PRESETS/Brewfile"
 )
 
