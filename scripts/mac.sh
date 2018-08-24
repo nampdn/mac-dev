@@ -46,5 +46,10 @@ install_cmd_line_tools() {
 		if [[ -f "$cmd_line_tools_temp_file" ]]; then
 			rm "$cmd_line_tools_temp_file"
 		fi
+
+		# Accept XCode license if it is available
+		if command -v xcodebuild >/dev/null; then
+			sudo xcodebuild -license accept
+		fi
 	fi
 }
