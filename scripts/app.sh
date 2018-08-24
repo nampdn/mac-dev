@@ -12,6 +12,6 @@ link_dotfiles() {
   local dotfile_dir="$1"
   if [ -d $dotfile_dir ]; then
     echo "Linking dotfiles to $HOME..."
-    sudo ln -s $dotfile_dir/* $HOME
+    sudo ln -s $dotfile_dir/.*rc $HOME
   fi
 }
