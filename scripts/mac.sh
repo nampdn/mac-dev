@@ -32,9 +32,14 @@ if [[ "$osx_vers" -ge 9 ]]; then
 	fi
 	
 	#Install the command line tools
-	
-	softwareupdate -i "$cmd_line_tools" --verbose
-	
+  local installed_marker="$DEVFOR_ROOT/.clt"
+	if [ ! -f $installed_marker ]; then
+	  softwareupdate -i "$cmd_line_tools" --verbose
+    echo $cmd_line_tools > $installed_marker
+	else
+    echo "Skipping Command Line Tools install..."
+  fi
+  
 	# Remove the temp file
 	
 	if [[ -f "$cmd_line_tools_temp_file" ]]; then
