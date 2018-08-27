@@ -11,7 +11,6 @@ declare -a DOWNLOAD_SCRIPTS=(
     "$REMOTE_SCRIPTS/install-linux.sh"
     "$REMOTE_SCRIPTS/install-mac.sh"
     "$REMOTE_SCRIPTS/nodejs.sh"
-    "$REMOTE_SCRIPTS/ruby.sh"
     "$REMOTE_SCRIPTS/shell.sh"
     "$REMOTE_SCRIPTS/ssh.sh"
     "$REMOTE_SCRIPTS/utils.sh"
