@@ -26,9 +26,6 @@ fi
 . "$WORKDIR/shell.sh"
 set_default_shell
 
-# Load ruby script
-. "$WORKDIR/ruby.sh"
-
 # Append script to shell_file
 append_to_file "$shell_file" "alias devfor-script='bash <(curl -s https://raw.githubusercontent.com/nampdn/devfor/master/mac)'"
 append_to_file "$shell_file" 'export PATH="$HOME/.bin:$PATH"'
