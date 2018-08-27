@@ -64,8 +64,8 @@ make_ssh_key $DEVFOR_USER_SSH
 
 # Load brew script
 . "$WORKDIR/brew.sh"
-install_nvm
 install_homebrew
+install_nvm
 check_brew
 override_user_brewfile
 install_brewfile
