@@ -11,7 +11,6 @@ install_nvm() {
             fancy_echo 'Installing nvm and lts Node.js and npm...'
             curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
             export NVM_DIR="$HOME/.nvm"
-            # shellcheck source=/dev/null
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             nvm install node --lts
         else
@@ -20,6 +19,7 @@ install_nvm() {
     else
         brew bundle --file=- <<EOF
             brew 'node'
+            brew 'yarn'
 EOF
     fi
     
