@@ -27,7 +27,7 @@ fi
 set_default_shell
 
 # Append script to shell_file
-append_to_file "$shell_file" "alias devfor-script='bash <(curl -s https://raw.githubusercontent.com/nampdn/devfor/master/mac)'"
+append_to_file "$shell_file" "alias devfor-script='bash <(curl -s https://raw.githubusercontent.com/nampdn/devfor/master/scripts/init)'"
 append_to_file "$shell_file" 'export PATH="$HOME/.bin:$PATH"'
 
 # shellcheck disable=SC2016
